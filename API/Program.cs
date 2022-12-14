@@ -1,3 +1,4 @@
+using API.Middleware;
 using Core.Interfaces;
 using Core.Mediatr.User.Create;
 using Core.Mediatr.User.Delete;
@@ -59,6 +60,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors("CorsPolicy");
 
+app.UseMiddleware<ApplicationErrorInterceptorMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
