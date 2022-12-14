@@ -3,9 +3,10 @@
 Este repositorio cuenta con la solucion al challenge planteado por Naitus el cual se divide en un front y una api. Esta es una Api creada con .net 6 y una base de datos sql server Se deben seguir los siguientes pasos para levantarla.
 
 Requisitos:
-1 - net 6
-2 - motor de base de datos sql server 2022
-3 - visual studio 2022
+1 - Git.
+2 - net 6.
+3 - motor de base de datos sql server 2022.
+4 - visual studio 2022.
 
 Pasos:
 
