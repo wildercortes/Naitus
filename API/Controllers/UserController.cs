@@ -19,7 +19,7 @@ namespace API.Controllers
             this.mediator = mediator;
         }
 
-        [HttpGet("Get by Id")]
+        [HttpGet("GetbyId")]
         public async Task<IActionResult> GetbyId([FromQuery] GetByIdUserRequest request, CancellationToken cancellationToken)
         {
             var response = await mediator.Send(request, cancellationToken);
@@ -27,7 +27,7 @@ namespace API.Controllers
             return Ok(response);
         }
 
-        [HttpGet("Get All")]
+        [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll([FromQuery] GetAllUserRequest request, CancellationToken cancellationToken)
         {
             var response = await mediator.Send(request, cancellationToken);
