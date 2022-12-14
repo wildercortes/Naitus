@@ -18,3 +18,5 @@ Pasos:
 
 4 -Testear la aplicacion
 
+Nota: la api cuenta con swagger por lo que no es necesario el front para probar.
+
