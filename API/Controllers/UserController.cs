@@ -52,7 +52,7 @@ namespace API.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> Update([FromBody] DeleteUserRequest request, CancellationToken cancellationToken)
+        public async Task<IActionResult> Delete([FromBody] DeleteUserRequest request, CancellationToken cancellationToken)
         {
             var response = await mediator.Send(request, cancellationToken);
 

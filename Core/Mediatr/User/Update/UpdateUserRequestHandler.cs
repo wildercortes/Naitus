@@ -14,15 +14,18 @@ namespace Core.Mediatr.User.Update
 
         public async Task<Unit> Handle(UpdateUserRequest request, CancellationToken cancellationToken)
         {
-            var user = new Entities.User
-            {
-                Rut = request.Rut,
-                Name = request.Name,
-                LastName = request.LastName,
-                Email = request.Email,
-                Password = request.Password,
-                BirthDate = request.BirthDate
-            };
+            var user = await _userRepository.GetById(request.Id);
+
+            if (user == null)
+                throw new Exception("User not found");
+
+            user.Rut = request.Rut;
+            user.Name = request.Name;
+            user.LastName = request.LastName;
+            user.Email = request.Email;
+            user.Password = request.Password;
+            user.BirthDate = request.BirthDate;
+
 
             await _userRepository.Update(user);
 

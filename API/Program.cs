@@ -1,10 +1,17 @@
 using Core.Interfaces;
 using Core.Mediatr.User.Create;
+using Core.Mediatr.User.Delete;
+using Core.Mediatr.User.GetById;
+using Core.Mediatr.User.Update;
 using Core.Repositories;
 using Data;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using System;
+using System.Reflection;
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
@@ -18,7 +25,6 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader());
 });
 
-builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -36,6 +42,11 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 builder.Services.AddMediatR(typeof(CreateUserRequestHandler).Assembly);
 
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddScoped<IValidator<CreateUserRequest>, CreateUserRequestValidator>();
+builder.Services.AddScoped<IValidator<GetByIdUserRequest>, GetByIdUserRequestValidator>();
+builder.Services.AddScoped<IValidator<UpdateUserRequest>, UpdateUserRequestValidator>();
+builder.Services.AddScoped<IValidator<DeleteUserRequest>, DeleteUserRequestValidator>();
 
 
 var app = builder.Build();
